@@ -9,5 +9,12 @@ class SharedPreferanceKeys {
   static const String downloadWithCellularDataSwitch = 'cellular_data';
   static const String userLocation = 'user_location';
   static const String hasEntered = 'has_entered';
+
+  // complete profile keys
+
+  static const String hight = 'hight';
+  static const String weight = 'weight';
+  static const String age = 'age';
+
   static const String langauge = 'language';
 }

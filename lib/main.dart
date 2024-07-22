@@ -4,14 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medical_app/main_screen.dart';
 
-import 'package:medical_app/features/splash/presentation/screens/splash_screen.dart';
-import 'package:medical_app/home_dev.dart';
 import 'package:medical_app/router/app_router.dart';
 
 import 'core/di/injection.dart';
-import 'drawer_screen.dart';
+
+import 'features/contact_us/presentation/screens/contact_us_screen.dart';
 
 
 void main() async {
@@ -52,10 +50,9 @@ class _MyAppState extends State<MyApp> {
                  onGenerateRoute: AppRouter.onGenerateRoute,
                  home: Builder(
                    builder: (context) {
-                     return SplashScreen() ;
+                     return ContactUsScreen() ;
                    },
                  )
-
              ) ;
            },
          )

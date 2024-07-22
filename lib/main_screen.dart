@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+
 import 'package:medical_app/core/config/colors.dart';
 import 'package:medical_app/features/blog/presentation/screens/blog_screen.dart';
 import 'package:medical_app/features/event/presentation/screens/event_screen.dart';
 import 'package:medical_app/features/home/presentation/screens/home_screen.dart';
-import 'package:medical_app/features/login/presentation/screens/login_screen.dart';
-import 'package:medical_app/features/profile/presentation/screens/profile_screen.dart';
-import 'package:medical_app/main.dart';
 
-import 'features/home/presentation/widgets/bottom_navigation_bar.dart';
+import 'package:medical_app/features/profile/presentation/screens/profile_screen.dart';
+
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -31,31 +29,38 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: AppColors.whiteColor,
       body: _screens[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: AppColors.mainBlue,
-        currentIndex: _currentIndex,
-        unselectedItemColor: AppColors.gray,
-        iconSize: 15,
-        backgroundColor: AppColors.whiteColor,
-        type: BottomNavigationBarType.fixed ,
-        elevation: 0,
-
-        onTap: (page){
-          setState(() {
-            _currentIndex = page;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: context.localeString("home"),
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.circular(16 ),
+        child: Container(
+          height: 64,
+          color: AppColors.whiteColor,
+          margin: EdgeInsets.all(24),
+          child: BottomNavigationBar(
+            selectedItemColor: AppColors.mainBlue,
+            currentIndex: _currentIndex,
+            unselectedItemColor: AppColors.gray,
+            iconSize: 15,
+            backgroundColor: AppColors.whiteColor,
+            type: BottomNavigationBarType.fixed ,
+            showUnselectedLabels: false,
+            onTap: (page){
+              setState(() {
+                _currentIndex = page;
+              });
+            },
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: context.localeString("home"),
+              ),
+              BottomNavigationBarItem(icon: Icon(Icons.event), label: "Event"),
+              BottomNavigationBarItem(icon: Icon(Icons.post_add), label: "Blog"),
+              BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+            ],
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.event), label: "Event"),
-          BottomNavigationBarItem(icon: Icon(Icons.post_add), label: "Blog"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-        ],
+        ),
       ),
     );
   }

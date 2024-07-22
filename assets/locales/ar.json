@@ -1,6 +1,5 @@
 {
  "title": "مرحبا",
- "message": "سلام كيفك",
  "onboarding1" : "التشخيص",
  "onboarding2" : "الأمراض المزمنة",
  "onboarding3" : "المختبر",
@@ -30,5 +29,15 @@
  "alreadyhavaaccount":"لديك حساب بالفعل ",
  "name" : "الاسم",
  "pleastenteravalidname" : "الرجاء ادخال اسم صالح",
- "home" : "الرئيسية"
+ "home" : "الرئيسية",
+ "completeyourprofile" :"هيا لنكمل ملفك الشخصي",
+ "itwillhelpusknowmoreaboutyou" : "وسوف يساعدنا على معرفة المزيد عنك!",
+ "age" : "ادخل عمرك",
+ "hight" : "ادخل طولك",
+ "weight" : "ادخل وزنك",
+ "save" : "حفظ",
+ "subject" : "الموضوع",
+  "message" : "ما هي المشكلة",
+ "tellus" : "تواصل معنا واخبرنا ماذا يحدث...",
+ "send" : "إرسال"
 }

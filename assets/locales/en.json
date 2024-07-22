@@ -1,6 +1,5 @@
 {
   "title": "Hello",
-  "message": "Hello, How are you?",
   "onboarding1" : "Diagnosis",
   "onboarding2" : "Chronic Diseases",
   "onboarding3" : "Laboratory",
@@ -30,6 +29,16 @@
   "alreadyhavaaccount" : "Already have an account? ",
   "name" : "Name",
   "pleastenteravalidname" : "Please enter a valid name",
-  "home" : "Home"
+  "home" : "Home",
+  "completeyourprofile" : "Let’s complete your profile",
+  "itwillhelpusknowmoreaboutyou" : "It will help us to know more about you!",
+  "age" : "Enter your age",
+  "hight": "Enter your hight",
+  "weight" : "Enter your weight",
+  "save" : "Save",
+  "subject" : "Subject",
+  "message" : "What is the Problem",
+  "tellus" : "Contact Us",
+  "send" : "Send"
 
 }

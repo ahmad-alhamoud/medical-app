@@ -8,4 +8,9 @@ class PngImages {
   static const String onboarding3 = "${_baseImagePath}onboarding3.png";
   static const String enLogo = "${_baseImagePath}english.png";
   static const String arLogo = "${_baseImagePath}ar.png";
+  static const String completeProfileImg = "${_baseImagePath}another.jpg";
+
+  static const String dateImg = "${_baseImagePath}date.png";
+  static const String hightImg = "${_baseImagePath}hight.png";
+  static const String weightImg = "${_baseImagePath}weight.png";
 }
