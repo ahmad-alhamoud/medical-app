@@ -1,12 +1,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:medical_app/features/login/presentation/screens/widgets/password_validations.dart';
 
 import '../../../../../core/config/spacing.dart';
 import '../../../../../core/global_function/app_regex.dart';
 import '../../../../../core/widgets/app_text_form_field.dart';
+import '../../../logic/login_cubit.dart';
 
 
 class EmailAndPassword extends StatefulWidget {
@@ -54,21 +56,21 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
   @override
   Widget build(BuildContext context) {
     return Form(
-       // key: context.read<LoginCubit>().formKey,
+       key: context.read<LoginCubit>().formKey,
         child: Column(
           children: [
             AppTextFormField(
-              // controller: context.read<LoginCubit>().emailController,
-              hintText: context.localeString("email"),
+               controller: context.read<LoginCubit>().emailController,
+              hintText: context.localeString("name"),
               validator: (value) {
-                if (value == null || value.isEmpty || !AppRegex.isEmailValid(value)) {
-                  return  context.localeString("pleaseenteravalidemail");
+                if (value == null || value.isEmpty) {
+                  return  context.localeString("pleastenteravalidname");
                 }
               },
             ),
             verticalSpace(18),
             AppTextFormField(
-             // controller: context.read<LoginCubit>().passwordController,
+              controller: context.read<LoginCubit>().passwordController,
               hintText: context.localeString("password"),
               isObscureText: isObscureText,
 
@@ -82,8 +84,8 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
                     isObscureText ? Icons.visibility_off : Icons.visibility),
               ),
               validator: (value) {
-                if (value == null || value.isEmpty || !hasMinLength || !hasUpperCase || !hasLowerCase || !hasSpecialCharacters || !hasNumber) {
-                  return context.localeString("pleaseenteravalidemail");
+                if (value == null || value.isEmpty) {
+                  return context.localeString("password");
                 }
               },
             ),

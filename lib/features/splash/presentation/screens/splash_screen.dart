@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical_app/core/config/colors.dart';
+import 'package:medical_app/drawer_screen.dart';
+import 'package:medical_app/features/complete_profile/presentation/screens/complete_profile_screen.dart';
 import 'package:medical_app/features/login/presentation/screens/login_screen.dart';
 
 import 'package:medical_app/features/splash/presentation/blocs/splash_bloc.dart';
@@ -22,8 +24,12 @@ class SplashScreen extends StatelessWidget {
           listener: (context, state) {
             if (state is AuthNavigationState) {
               Navigator.pushReplacementNamed(context, LoginScreen.routeName);
-            } else if (state is MainNavigationState) {
-              // Navigator.pushReplacementNamed(context, MainScreen.routeName);
+            }
+            else if ( state is CompleteProfileState) {
+              Navigator.of(context).pushReplacementNamed(CompleteProfileScreen.routeName);
+            }
+            else if (state is MainNavigationState) {
+              Navigator.of(context).pushReplacementNamed(DrawerScreen.routeName);
             } else if (state is OnBoardingNavigationState) {
               Navigator.pushReplacementNamed(
                   context, OnBoardingScreen.routeName,

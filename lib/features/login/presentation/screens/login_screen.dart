@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medical_app/core/config/colors.dart';
@@ -6,14 +7,15 @@ import 'package:medical_app/core/config/text_style/text_style.dart';
 import 'package:medical_app/core/widgets/app_logo.dart';
 import 'package:medical_app/features/login/presentation/screens/widgets/dont_have_account_text.dart';
 import 'package:medical_app/features/login/presentation/screens/widgets/email_and_password.dart';
+import 'package:medical_app/features/login/presentation/screens/widgets/login_bloc_listener.dart';
 import 'package:medical_app/features/login/presentation/screens/widgets/terms_and_conditions_text.dart';
 
 import '../../../../core/config/spacing.dart';
-import '../../../../core/constant/images/svg_images.dart';
-import '../../../../core/widgets/app_text_button.dart';
 
-import '../../../../home_dev.dart';
-import '../../../../widgets/svg_viewer.dart';
+import '../../../../core/widgets/app_text_button.dart';
+import '../../logic/login_cubit.dart';
+
+
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -60,13 +62,14 @@ class LoginScreen extends StatelessWidget {
                       textStyle: FontTextStyle.regular(
                           fontSize: 16, color: AppColors.whiteColor),
                       onPressed: () {
-                        //      validateThenDoLogin(context);
+                            validateThenDoLogin(context);
                       },
                     ),
                     verticalSpace(16),
                     const TermsAndConditionsText(),
                     verticalSpace(30),
                      const DontHaveAccountText(),
+                   const LoginBlocListener()
                   ],
                 ),
               ],
@@ -77,9 +80,9 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-// void validateThenDoLogin(BuildContext context) {
-//   if (context.read<LoginCubit>().formKey.currentState!.validate()) {
-//     context.read<LoginCubit>().emitLoginStates();
-//   }
-// }
+void validateThenDoLogin(BuildContext context) {
+  if (context.read<LoginCubit>().formKey.currentState!.validate()) {
+    context.read<LoginCubit>().emitLoginStates();
+  }
+}
 }

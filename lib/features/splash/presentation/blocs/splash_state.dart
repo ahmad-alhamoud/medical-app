@@ -11,5 +11,5 @@ class AuthNavigationState extends SplashState {}
 
 class OnBoardingNavigationState extends SplashState {}
 
-
+class CompleteProfileState extends SplashState{}
 

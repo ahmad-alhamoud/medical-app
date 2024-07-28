@@ -1,9 +1,6 @@
-import 'dart:convert';
+
 // import 'package:share_plus/share_plus.dart';
-import 'dart:io';
 
-
-import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constant/shared_preferance/shared_preferance_keys.dart';
@@ -55,8 +52,14 @@ class GlobalPruposeFunctions {
 
   static String? getAccessToken() {
     final prefs = serviceLocator<SharedPreferences>();
-    return prefs.getString(SharedPreferanceKeys.accessToken);
+    return prefs.getString(SharedPreferanceKeys.userToken);
   }
+
+  static String? getUserAge() {
+    final prefs = serviceLocator<SharedPreferences>();
+    return prefs.getString(SharedPreferanceKeys.age);
+  }
+
   //
   // static Map<String, dynamic>? getUserInfoFromGrooglTokenId(String? token) {
   //   if (token == null) return null;

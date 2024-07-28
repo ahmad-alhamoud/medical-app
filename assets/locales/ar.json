@@ -21,7 +21,7 @@
  "atleastlongcharcters" : "على الاقل بطول 8 محارف",
  "email" : "البريد الإلكتروني",
  "password" : "كلمة السر",
- "pleaseenteravalidemail" : "الرجاء ادخال كلمة سر صالحة",
+ "pleaseenteravalidemail" : "الرجاء ادخال كلمة ايميل صالح",
  "donthavaanaccount" : "ليس لديك حساب ؟",
  "signup" : " انشاء حساب",
  "createaccount" : "انشاء حساب",

@@ -7,5 +7,7 @@ class SvgImages {
 
   static const String home = "${_baseImagePath}home.svg";
   static const String user = "${_baseImagePath}user.svg";
+  static const String arrow_back = "${_baseImagePath}arrow_back.svg";
+  static const String bookmark = "${_baseImagePath}bookmark.svg";
 
 }

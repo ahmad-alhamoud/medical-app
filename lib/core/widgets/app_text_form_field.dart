@@ -11,7 +11,7 @@ class AppTextFormField extends StatelessWidget {
   final TextStyle? inputTextStyle;
   final TextStyle? hintStyle;
   final String hintText;
-
+  final TextInputType? keyboardType;
   final bool? isObscureText;
   final Widget? suffixIcon;
   final Color? backgroundColor;
@@ -25,6 +25,7 @@ class AppTextFormField extends StatelessWidget {
       this.enableBorder,
       this.inputTextStyle,
       this.hintStyle,
+        this.keyboardType,
       required this.hintText,
       this.isObscureText,
       this.suffixIcon,
@@ -39,7 +40,7 @@ class AppTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-
+      keyboardType: keyboardType?? TextInputType.text,
       controller: controller,
       decoration: InputDecoration(
         fillColor: backgroundColor ?? AppColors.moreLightGray,

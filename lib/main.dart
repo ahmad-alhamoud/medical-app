@@ -1,21 +1,21 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:flutter_locales/flutter_locales.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+
 import 'package:medical_app/router/app_router.dart';
 
 import 'core/di/injection.dart';
 
-import 'features/contact_us/presentation/screens/contact_us_screen.dart';
+import 'features/splash/presentation/screens/splash_screen.dart';
 
 
 void main() async {
-   WidgetsFlutterBinding.ensureInitialized();
-   await Locales.init(['en', 'ar']);
-   await init();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Locales.init(['en', 'ar']);
+  await init();
   runApp(const MyApp());
 }
 
@@ -33,29 +33,30 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-    return  LocaleBuilder(
-        builder : (locale) =>
-         ScreenUtilInit(
-           designSize: const Size(360, 690),
-           minTextAdapt: true,
-           splitScreenMode: true,
-           builder: (_,child) {
-             return MaterialApp(
-                 debugShowCheckedModeBanner: false,
-                 localizationsDelegates: Locales.delegates,
-                 supportedLocales: Locales.supportedLocales,
-                 locale: locale,
-                 onGenerateRoute: AppRouter.onGenerateRoute,
-                 home: Builder(
-                   builder: (context) {
-                     return ContactUsScreen() ;
-                   },
-                 )
-             ) ;
-           },
-         )
+    return LocaleBuilder(
+        builder: (locale) =>
+            ScreenUtilInit(
+              designSize: const Size(360, 690),
+              minTextAdapt: true,
+              splitScreenMode: true,
+              builder: (_, child) {
+                return MaterialApp(
+                    debugShowCheckedModeBanner: false,
+                    localizationsDelegates: Locales.delegates,
+                    supportedLocales: Locales.supportedLocales,
+                    locale: locale,
+                    onGenerateRoute: AppRouter.onGenerateRoute,
+                    home: Builder(
+                      builder: (context) {
+                        return SplashScreen();
+                      },
+                    )
+                );
+              },
+            )
 
     );
   }
@@ -76,8 +77,8 @@ class Start extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-              onPressed: (){
-                Navigator.of(context).push(MaterialPageRoute(builder: (_){
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (_) {
                   return HomePage();
                 }));
               }, child: Text("Go To Next Page"))
@@ -126,7 +127,7 @@ class _HomePageState extends State<HomePage> {
         child: ListView.builder(
             shrinkWrap: true,
             itemCount: locales.length,
-            itemBuilder: (context,index){
+            itemBuilder: (context, index) {
               //If currentIndex equal index of builder the the bool value gets true
               selectedLocale = currentIndex == index;
               return Container(
@@ -136,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(8)
                 ),
                 child: ListTile(
-                  onTap: (){
+                  onTap: () {
                     // in here we make a click on each language to switch between based on its index
                     setState(() {
                       // Sorry my mistake
@@ -145,9 +146,13 @@ class _HomePageState extends State<HomePage> {
                     Locales.change(context, localeCodes[currentIndex]);
                   },
                   //So now we want the leading icon to change after selected language
-                  leading: Icon(selectedLocale? Icons.check : Icons.language,color: Colors.white,),
-                  title: Text(locales[index],style: const TextStyle(color: Colors.white),),
-                  trailing: const Icon(Icons.arrow_forward_ios_rounded,size: 15,color: Colors.white,),
+                  leading: Icon(selectedLocale ? Icons.check : Icons.language,
+                    color: Colors.white,),
+                  title: Text(locales[index],
+                    style: const TextStyle(color: Colors.white),),
+                  trailing: const Icon(
+                    Icons.arrow_forward_ios_rounded, size: 15,
+                    color: Colors.white,),
                 ),
               );
             }),

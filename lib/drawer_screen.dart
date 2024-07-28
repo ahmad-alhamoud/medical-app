@@ -8,6 +8,7 @@ import 'package:medical_app/menu_screen.dart';
 class DrawerScreen extends StatefulWidget {
     const DrawerScreen({Key? key}) : super(key: key);
 
+    static const routeName = '/drawer_screen';
     @override
     State<DrawerScreen> createState() => _DrawerScreenState();
   }

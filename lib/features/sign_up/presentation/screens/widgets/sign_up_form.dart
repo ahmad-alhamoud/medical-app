@@ -1,17 +1,18 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_locales/flutter_locales.dart';
-import 'package:medical_app/features/login/presentation/screens/login_screen.dart';
 
-import '../../../../../core/config/colors.dart';
+
 import '../../../../../core/config/spacing.dart';
-import '../../../../../core/constant/images/svg_images.dart';
+
 import '../../../../../core/global_function/app_regex.dart';
 import '../../../../../core/widgets/app_text_form_field.dart';
-import '../../../../../widgets/svg_viewer.dart';
+
 import '../../../../login/presentation/screens/widgets/password_validations.dart';
 
 import 'package:flutter/material.dart';
+
+import '../../../logic/sign_up_cubit.dart';
 
 
 class SignupForm extends StatefulWidget {
@@ -31,12 +32,13 @@ class _SignupFormState extends State<SignupForm> {
   bool hasNumber = false;
   bool hasMinLength = false;
 
-  late TextEditingController passwordController = TextEditingController();
+ late TextEditingController passwordController ;
+
 
   @override
   void initState() {
     super.initState();
-  //  passwordController = context.read<SignupCubit>().passwordController;
+    passwordController = context.read<SignUpCubit>().passwordController;
     setupPasswordControllerListener();
   }
 
@@ -56,7 +58,7 @@ class _SignupFormState extends State<SignupForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-    //  key: context.read<SignupCubit>().formKey,
+      key: context.read<SignUpCubit>().formKey,
       child: Column(
         children: [
 
@@ -67,10 +69,11 @@ class _SignupFormState extends State<SignupForm> {
                 return context.localeString("pleastenteravalidname");
               }
             },
-          //  controller: context.read<SignupCubit>().nameController,
+          controller: context.read<SignUpCubit>().nameController,
           ),
           verticalSpace(18),
           AppTextFormField(
+
             hintText: context.localeString("email"),
             validator: (value) {
               if (value == null ||
@@ -79,11 +82,11 @@ class _SignupFormState extends State<SignupForm> {
                 return context.localeString("pleaseenteravalidemail");
               }
             },
-           // controller: context.read<SignupCubit>().emailController,
+            controller: context.read<SignUpCubit>().emailController,
           ),
           verticalSpace(18),
           AppTextFormField(
-         //   controller: context.read<SignupCubit>().passwordController,
+            controller: context.read<SignUpCubit>().passwordController,
             hintText: context.localeString("password"),
             isObscureText: isPasswordObscureText,
             suffixIcon: GestureDetector(
@@ -116,9 +119,9 @@ class _SignupFormState extends State<SignupForm> {
     );
   }
 
-  @override
-  void dispose() {
-    passwordController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   passwordController.dispose();
+  //   super.dispose();
+  // }
 }

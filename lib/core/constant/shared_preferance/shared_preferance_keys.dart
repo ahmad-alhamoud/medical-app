@@ -1,6 +1,7 @@
 class SharedPreferanceKeys {
   static const String currentLang = "current_land";
-  static const String accessToken = 'access_token';
+  static const String userToken = 'user_token';
+  static const String userEmail = 'use_email';
   static const String userInfo = "user_info";
   static const String emailSwitch = 'email_switch';
   static const String contentUpdatesSwitch = 'content_updates';
