@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:medical_app/features/contact_us/data/models/contact_us_reponse.dart';
 import 'package:medical_app/features/login/data/models/login_response.dart';
 import 'package:medical_app/features/sign_up/data/models/sign_up_response.dart';
 
@@ -26,7 +27,7 @@ abstract class ApiService {
         );
     
     @POST(ApiConstants.contactUs)
-    Future<String> contactUs(
+    Future<ContactUsResponse> contactUs(
         @Body() ContactUsRequestBody contactUsRequestBody
         );
 

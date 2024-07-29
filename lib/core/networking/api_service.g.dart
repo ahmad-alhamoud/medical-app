@@ -77,29 +77,31 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<String> contactUs(ContactUsRequestBody contactUsRequestBody) async {
+  Future<ContactUsResponse> contactUs(
+      ContactUsRequestBody contactUsRequestBody) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(contactUsRequestBody.toJson());
-    final _result = await _dio.fetch<String>(_setStreamType<String>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ContactUsResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          'contact-forms',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        ))));
-    final _value = _result.data!;
+            .compose(
+              _dio.options,
+              'contact-forms',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = ContactUsResponse.fromJson(_result.data!);
     return _value;
   }
 

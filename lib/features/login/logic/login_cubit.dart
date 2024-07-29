@@ -32,17 +32,17 @@ class LoginCubit extends Cubit<LoginState> {
     response.when(
         success: (loginResponse) async{
           final prefs = serviceLocator<SharedPreferences>();
-          prefs.setString(SharedPreferanceKeys.userToken,loginResponse.jwt);
+          await saveUserToken(loginResponse.jwt);
           emit(LoginState.success(loginResponse));
         },
         failure: (error) {
           emit(LoginState.error(error: error.apiErrorModel.message ?? 'Some Thing Went Wrong' )) ;
         });
   }
-  //
-  // Future<void> saveUserToken(String token) async {
-  //   final prefs = serviceLocator<SharedPreferences>() ;
-  //   await  prefs.setString(SharedPreferanceKeys.userToken, token);
-  //   DioFactory.setTokenIntoHeaderAfterLogin(token);
-  // }
+
+  Future<void> saveUserToken(String token) async {
+    final prefs = serviceLocator<SharedPreferences>() ;
+    await  prefs.setString(SharedPreferanceKeys.userToken, token);
+    DioFactory.setTokenIntoHeaderAfterLogin(token);
+  }
 }

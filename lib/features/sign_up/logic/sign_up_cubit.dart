@@ -31,8 +31,7 @@ class SignUpCubit extends Cubit<SignupState> {
     response.when(
         success: (signupResponse) async{
           final prefs = serviceLocator<SharedPreferences>();
-          //  await saveUserToken(signupResponse.jwt);
-          await prefs.setString(SharedPreferanceKeys.userToken  ,signupResponse.jwt);
+          await saveUserToken(signupResponse.jwt);
           await prefs.setString(SharedPreferanceKeys.userEmail  ,signupResponse.user.email);
           await prefs.setString(SharedPreferanceKeys.userInfo  ,signupResponse.user.username);
           emit(SignupState.signupSuccess(signupResponse));
@@ -43,10 +42,10 @@ class SignUpCubit extends Cubit<SignupState> {
   }
 
 
-  // Future<void> saveUserToken(String token) async {
-  //   final prefs = serviceLocator<SharedPreferences>() ;
-  //   await  prefs.setString(SharedPreferanceKeys.userToken, token);
-  //   DioFactory.setTokenIntoHeaderAfterLogin(token);
-  // }
+  Future<void> saveUserToken(String token) async {
+    final prefs = serviceLocator<SharedPreferences>() ;
+    await  prefs.setString(SharedPreferanceKeys.userToken, token);
+    DioFactory.setTokenIntoHeaderAfterLogin(token);
+  }
 
 }
