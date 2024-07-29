@@ -1,5 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:medical_app/core/constant/shared_preferance/shared_preferance_keys.dart';
+import 'package:medical_app/core/di/injection.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class DioFactory {
   /// private constructor as I don't want to allow creating an instance of this class
@@ -15,12 +19,27 @@ class DioFactory {
       dio!
         ..options.connectTimeout = timeOut
         ..options.receiveTimeout = timeOut;
+      //addDioHeaders();
       addDioInterceptor();
       return dio!;
     } else {
       return dio!;
     }
   }
+
+  // static void addDioHeaders() async {
+  //   dio?.options.headers = {
+  //     'Accept': 'application/json',
+  //     'Authorization':
+  //     'Bearer ${await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken)}',
+  //   };
+  // }
+  //
+  // static void setTokenIntoHeaderAfterLogin(String token) {
+  //   dio?.options.headers = {
+  //     'Authorization': 'Bearer $token',
+  //   };
+  // }
 
   static void addDioInterceptor() {
     dio?.interceptors.add(
@@ -32,4 +51,3 @@ class DioFactory {
     );
   }
 }
-

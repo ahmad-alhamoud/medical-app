@@ -13,7 +13,6 @@ class SignUpRepo {
       SignUpRequestBody signUpRequestBody) async {
     try {
       final response = await apiService.signup(signUpRequestBody);
-
       return ApiResult.success(response);
     } catch (error) {
       return ApiResult.failure(ErrorHandler.handle(error));

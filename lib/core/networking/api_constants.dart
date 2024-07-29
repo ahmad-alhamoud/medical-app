@@ -2,8 +2,9 @@
 class ApiConstants {
   static const String apiBaseUrl = "http://192.168.1.104:1337/api/" ;
   static const String login = "auth/local" ;
-  static const String signup = "auth/local/register" ;
+  static const String signup = "auth/local/register";
   static const String blogs = "blogs" ;
+  static const String contactUs = "contact-forms" ;
 
 
 }

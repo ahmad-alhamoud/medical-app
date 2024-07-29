@@ -3,6 +3,7 @@ import 'package:flutter_locales/flutter_locales.dart';
 
 import 'package:medical_app/core/config/colors.dart';
 import 'package:medical_app/features/blog/presentation/screens/blog_screen.dart';
+import 'package:medical_app/features/contact_us/presentation/screens/contact_us_screen.dart';
 import 'package:medical_app/features/event/presentation/screens/event_screen.dart';
 import 'package:medical_app/features/home/presentation/screens/home_screen.dart';
 
@@ -18,7 +19,7 @@ class MainScreen extends StatefulWidget {
 
 List<Widget> _screens = [
   HomeScreen(),
-  EventScreen(),
+  ContactUsScreen(),
   BlogScreen(),
   ProfileScreen(),
 ];

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medical_app/features/complete_profile/presentation/screens/complete_profile_screen.dart';
+import 'package:medical_app/features/contact_us/logic/contact_us_cubit.dart';
+import 'package:medical_app/features/contact_us/presentation/screens/contact_us_screen.dart';
 import 'package:medical_app/features/login/logic/login_cubit.dart';
 import 'package:medical_app/features/login/presentation/screens/login_screen.dart';
 
@@ -28,15 +30,25 @@ class AppRouter {
                 child: const SignUpScreen(),
               ),
         );
+      case ContactUsScreen.routeName:
+        return MaterialPageRoute(
+          builder: (_) =>
+              BlocProvider(
+                create: (context) => getIt<ContactUsCubit>(),
+                child: const ContactUsScreen(),
+              ),
+        );
 
       case CompleteProfileScreen.routeName:
-        return MaterialPageRoute(
-            builder: (_) => CompleteProfileScreen());
+        return MaterialPageRoute(builder: (_) => CompleteProfileScreen());
 
 
       case DrawerScreen.routeName:
-        return MaterialPageRoute(
-            builder: (_) => DrawerScreen());
+        return MaterialPageRoute(builder: (_) =>
+            BlocProvider(
+              create: (context) => getIt<ContactUsCubit>(),
+              child: DrawerScreen(),
+            ));
 
       case OnBoardingScreen.routeName:
         return MaterialPageRoute(

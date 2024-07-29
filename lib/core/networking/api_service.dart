@@ -4,6 +4,7 @@ import 'package:medical_app/features/sign_up/data/models/sign_up_response.dart';
 
 import 'package:retrofit/http.dart';
 
+import '../../features/contact_us/data/models/contact_us_request_body.dart';
 import '../../features/login/data/models/login_request_body.dart';
 import '../../features/sign_up/data/models/sign_up_request_body.dart';
 import 'api_constants.dart';
@@ -23,7 +24,11 @@ abstract class ApiService {
     Future<LoginResponse> login(
         @Body() LoginRequestBody loginRequestBody
         );
-
+    
+    @POST(ApiConstants.contactUs)
+    Future<String> contactUs(
+        @Body() ContactUsRequestBody contactUsRequestBody
+        );
 
 
   // @POST(ApiConstants.login)
