@@ -161,6 +161,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/details.jpg
   AssetGenImage get details => const AssetGenImage('assets/images/details.jpg');
 
+  /// File path: assets/images/doctor_image.png
+  AssetGenImage get doctorImage =>
+      const AssetGenImage('assets/images/doctor_image.png');
+
   /// File path: assets/images/english.png
   AssetGenImage get english => const AssetGenImage('assets/images/english.png');
 
@@ -170,6 +174,18 @@ class $AssetsImagesGen {
   /// File path: assets/images/home.svg
   String get home => 'assets/images/home.svg';
 
+  /// File path: assets/images/img.png
+  AssetGenImage get img => const AssetGenImage('assets/images/img.png');
+
+  /// File path: assets/images/img_1.png
+  AssetGenImage get img1 => const AssetGenImage('assets/images/img_1.png');
+
+  /// File path: assets/images/img_2.png
+  AssetGenImage get img2 => const AssetGenImage('assets/images/img_2.png');
+
+  /// File path: assets/images/img_3.png
+  AssetGenImage get img3 => const AssetGenImage('assets/images/img_3.png');
+
   /// File path: assets/images/logo.svg
   String get logo => 'assets/images/logo.svg';
 
@@ -178,6 +194,9 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/logo_white.svg
   String get logoWhite => 'assets/images/logo_white.svg';
+
+  /// File path: assets/images/next_go.png
+  AssetGenImage get nextGo => const AssetGenImage('assets/images/next_go.png');
 
   /// File path: assets/images/onboarding1.png
   AssetGenImage get onboarding1 =>
@@ -190,6 +209,24 @@ class $AssetsImagesGen {
   /// File path: assets/images/onboarding3.png
   AssetGenImage get onboarding3 =>
       const AssetGenImage('assets/images/onboarding3.png');
+
+  /// File path: assets/images/p_contact.png
+  AssetGenImage get pContact =>
+      const AssetGenImage('assets/images/p_contact.png');
+
+  /// File path: assets/images/p_next.png
+  AssetGenImage get pNext => const AssetGenImage('assets/images/p_next.png');
+
+  /// File path: assets/images/p_privacy.png
+  AssetGenImage get pPrivacy =>
+      const AssetGenImage('assets/images/p_privacy.png');
+
+  /// File path: assets/images/p_setting.png
+  AssetGenImage get pSetting =>
+      const AssetGenImage('assets/images/p_setting.png');
+
+  /// File path: assets/images/u1.png
+  AssetGenImage get u1 => const AssetGenImage('assets/images/u1.png');
 
   /// File path: assets/images/user.svg
   String get user => 'assets/images/user.svg';
@@ -209,15 +246,26 @@ class $AssetsImagesGen {
         completeProfileImg,
         date,
         details,
+        doctorImage,
         english,
         hight,
         home,
+        img,
+        img1,
+        img2,
+        img3,
         logo,
         logoIcon,
         logoWhite,
+        nextGo,
         onboarding1,
         onboarding2,
         onboarding3,
+        pContact,
+        pNext,
+        pPrivacy,
+        pSetting,
+        u1,
         user,
         weight
       ];

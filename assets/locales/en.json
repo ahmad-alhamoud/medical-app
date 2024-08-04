@@ -39,6 +39,12 @@
   "subject" : "Subject",
   "message" : "What is the Problem",
   "tellus" : "Contact Us",
-  "send" : "Send"
+  "send" : "Send",
+  "ministryofhealth": "Ministry of Health",
+  "validmessage" : "please enter the message",
+  "patientage" : "Age",
+  "sessions" : "sessions",
+  "sessionsdetails" : "Sessions Details",
+  "diseases": "diseases"
 
 }

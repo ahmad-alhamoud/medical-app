@@ -13,7 +13,7 @@ class _ApiService implements ApiService {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://192.168.1.104:1337/api/';
+    baseUrl ??= 'http://192.168.1.106:1337/api/';
   }
 
   final Dio _dio;
@@ -102,6 +102,87 @@ class _ApiService implements ApiService {
               baseUrl,
             ))));
     final _value = ContactUsResponse.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
+  Future<BlogResponseBody> getAllBlogs() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<BlogResponseBody>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'blogs?&fields[0]=title&populate[mainImage][fields][0]=name&populate[mainImage][fields][1]=url&populate[paragraph][fields][0]=title&populate[paragraph][fields][1]=content',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = BlogResponseBody.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
+  Future<SessionResponseBody> getAllSessions() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<SessionResponseBody>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'patient-profiles/1?fields[0]=id&populate[sessions][fields][1]=*',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = SessionResponseBody.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
+  Future<DiseaseResponseBody> getAllDiseases() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<DiseaseResponseBody>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'patient-profiles/1?fields[0]=id&populate=diseases',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = DiseaseResponseBody.fromJson(_result.data!);
     return _value;
   }
 

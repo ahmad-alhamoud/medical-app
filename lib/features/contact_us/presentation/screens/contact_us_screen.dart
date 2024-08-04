@@ -52,15 +52,21 @@ class ContactUsScreen extends StatelessWidget {
                   controller: context.read<ContactUsCubit>().subjectController,
                     hintText: context.localeString("subject"),
                     validator: (value) {
-                      return null;
+                      return null ;
                     }
                 ),
                 verticalSpace(12),
                 AppTextFormField(
+
+                  minLines: 1,
+                    keyboardType: TextInputType.multiline,
+                  maxLines: 5,
                   controller: context.read<ContactUsCubit>().messageController,
                     hintText: context.localeString("message"),
                     validator: (value) {
-                      return null;
+                      if ( value == null || value.isEmpty) {
+                        return context.localeString("validMessage");
+                      }
                     }
                 ),
                 verticalSpace(100),

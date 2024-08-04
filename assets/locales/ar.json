@@ -39,5 +39,11 @@
  "subject" : "الموضوع",
   "message" : "ما هي المشكلة",
  "tellus" : "تواصل معنا واخبرنا ماذا يحدث...",
- "send" : "إرسال"
+ "send" : "إرسال",
+ "ministryofhealth": "وزارة الصحة",
+ "validmessage" : "الرجاء إدخال الرسالة",
+ "patientage" : "السن",
+ "sessions" : "جلسات",
+ "sessionsdetails" : "الجلسات الطبية",
+ "diseases": "الأمراض"
 }

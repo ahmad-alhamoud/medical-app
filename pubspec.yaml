@@ -58,6 +58,7 @@ dependencies:
   retrofit: ^4.1.0
   retrofit_generator: ^8.1.2
   pretty_dio_logger: ^1.4.0
+  cached_network_image: ^3.4.0
 
 
 

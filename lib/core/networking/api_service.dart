@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:medical_app/features/blog/data/models/blog_response_body.dart';
 import 'package:medical_app/features/contact_us/data/models/contact_us_reponse.dart';
+import 'package:medical_app/features/disease/data/models/diseases_response_body.dart';
 import 'package:medical_app/features/login/data/models/login_response.dart';
+import 'package:medical_app/features/session/data/models/session_response_body.dart';
 import 'package:medical_app/features/sign_up/data/models/sign_up_response.dart';
 
 import 'package:retrofit/http.dart';
@@ -30,6 +33,16 @@ abstract class ApiService {
     Future<ContactUsResponse> contactUs(
         @Body() ContactUsRequestBody contactUsRequestBody
         );
+
+    @GET(ApiConstants.allBlogs)
+    Future<BlogResponseBody> getAllBlogs();
+
+  @GET(ApiConstants.sessions)
+  Future<SessionResponseBody> getAllSessions();
+
+
+  @GET(ApiConstants.diseases)
+  Future<DiseaseResponseBody> getAllDiseases();
 
 
   // @POST(ApiConstants.login)

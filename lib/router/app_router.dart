@@ -43,6 +43,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => CompleteProfileScreen());
 
 
+
       case DrawerScreen.routeName:
         return MaterialPageRoute(builder: (_) =>
             BlocProvider(
