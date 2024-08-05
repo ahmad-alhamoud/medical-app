@@ -7,7 +7,7 @@ import '../constant/shared_preferance/shared_preferance_keys.dart';
 import '../di/injection.dart';
 
 class GlobalPruposeFunctions {
-  // GlobalPruposeFunctions._();
+  GlobalPruposeFunctions._();
   //
   //
   //
@@ -58,6 +58,24 @@ class GlobalPruposeFunctions {
   static String? getUserAge() {
     final prefs = serviceLocator<SharedPreferences>();
     return prefs.getString(SharedPreferanceKeys.age);
+  }
+  static String? getUserHeight() {
+    final prefs = serviceLocator<SharedPreferences>();
+    return prefs.getString(SharedPreferanceKeys.hight);
+  }
+
+  static String? getUserWeight() {
+    final prefs = serviceLocator<SharedPreferences>();
+    return prefs.getString(SharedPreferanceKeys.weight);
+  }
+
+  static String? getEmailUser() {
+    final prefs = serviceLocator<SharedPreferences>();
+    return prefs.getString(SharedPreferanceKeys.userEmail);
+  }
+  static String? getUserName() {
+    final prefs = serviceLocator<SharedPreferences>();
+    return prefs.getString(SharedPreferanceKeys.userEmail);
   }
 
   //

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:medical_app/features/allargie/data/models/allargie_response_body.dart';
 import 'package:medical_app/features/blog/data/models/blog_response_body.dart';
 import 'package:medical_app/features/contact_us/data/models/contact_us_reponse.dart';
 import 'package:medical_app/features/disease/data/models/diseases_response_body.dart';
@@ -10,6 +11,7 @@ import 'package:retrofit/http.dart';
 
 import '../../features/contact_us/data/models/contact_us_request_body.dart';
 import '../../features/login/data/models/login_request_body.dart';
+import '../../features/profile/data/models/profile_response_body.dart';
 import '../../features/sign_up/data/models/sign_up_request_body.dart';
 import 'api_constants.dart';
 
@@ -44,6 +46,12 @@ abstract class ApiService {
   @GET(ApiConstants.diseases)
   Future<DiseaseResponseBody> getAllDiseases();
 
+
+  @GET(ApiConstants.allargies)
+  Future<AllargieResponseBody> getAllAllargies();
+
+  @GET(ApiConstants.profile)
+  Future<ProfileResponseBody> getPatientProfile();
 
   // @POST(ApiConstants.login)
   // Future<LoginResponse> login(

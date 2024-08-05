@@ -16,6 +16,7 @@ import 'package:medical_app/features/blog/logic/blog_state.dart';
 import 'package:medical_app/features/blog/presentation/screens/blog_detail_screen.dart';
 
 import '../../../../core/constant/images/svg_images.dart';
+import '../../../../core/widgets/no_data_found_screen.dart';
 import '../../../../widgets/svg_viewer.dart';
 
 class BlogScreen extends StatefulWidget {
@@ -76,7 +77,7 @@ class _BlogScreenState extends State<BlogScreen> {
                               child: Hero(
                                 tag: data[index].id.toString(),
                                 child: Container(
-                                  height: 252.h,
+                                  height: 200.h,
                                   width: size.width,
                                   decoration: BoxDecoration(
                                     color: AppColors.lighterGray,
@@ -105,14 +106,6 @@ class _BlogScreenState extends State<BlogScreen> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      data[index].attributes!.title.toString(),
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: FontTextStyle.regular(
-                                          fontSize: 20,
-                                          color: AppColors.whiteColor),
-                                    ),
                                     verticalSpace(10),
                                     Row(
                                       mainAxisAlignment:
@@ -148,11 +141,7 @@ class _BlogScreenState extends State<BlogScreen> {
                 },
               );
             }, orElse: () {
-              return const Center(
-                child: CircularProgressIndicator(
-                  color: AppColors.mainBlue,
-                ),
-              );
+              return Center(child: NoDataFoundWidget());
             });
           },
         ),

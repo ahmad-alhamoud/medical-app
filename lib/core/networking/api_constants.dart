@@ -5,11 +5,16 @@ class ApiConstants {
   static const String signup = "auth/local/register";
   static const String contactUs = "contact-forms" ;
 
-  static const String imageBase = "http://192.168.105.25:1337";
+  static const String imageBase = "http://192.168.1.106:1337";
   static const allBlogs = 'blogs?&fields[0]=title&populate[mainImage][fields][0]=name&populate[mainImage][fields][1]=url&populate[paragraph][fields][0]=title&populate[paragraph][fields][1]=content' ;
 
   static const String sessions = 'patient-profiles/1?fields[0]=id&populate[sessions][fields][1]=*';
   static const String diseases = 'patient-profiles/1?fields[0]=id&populate=diseases';
+
+  static const String allargies = 'patient-profiles/1?fields[0]=id&populate=allargies';
+
+  static const String profile = 'patient-profiles/1?fields[0]=id&fields[1]=blodType&fields[2]=Smoker&fields[3]=familyStatus&fields[4]=birthDate&fields[5]=phoneNumber&fields[6]=job&fields[7]=nationality&populate[IDFile][fields][1]=url&populate[ProfilePic][fields][1]=url';
+
 }
 
 

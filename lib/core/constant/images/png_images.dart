@@ -22,4 +22,7 @@ class PngImages {
   static const String contactImage = "${_baseImagePath}p_contact.png";
   static const String privacyImage = "${_baseImagePath}p_privacy.png";
   static const String settingImage = "${_baseImagePath}p_setting.png";
+
+  static const String noDataFoundImage = "${_baseImagePath}no_data_found.json";
+  static const String bloodImage = "${_baseImagePath}blood.png";
 }

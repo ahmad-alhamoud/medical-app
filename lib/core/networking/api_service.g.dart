@@ -186,6 +186,60 @@ class _ApiService implements ApiService {
     return _value;
   }
 
+  @override
+  Future<AllargieResponseBody> getAllAllargies() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<AllargieResponseBody>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'patient-profiles/1?fields[0]=id&populate=allargies',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = AllargieResponseBody.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
+  Future<ProfileResponseBody> getPatientProfile() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ProfileResponseBody>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'patient-profiles/1?fields[0]=id&fields[1]=blodType&fields[2]=Smoker&fields[3]=familyStatus&fields[4]=birthDate&fields[5]=phoneNumber&fields[6]=job&fields[7]=nationality&populate[IDFile][fields][1]=url&populate[ProfilePic][fields][1]=url',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = ProfileResponseBody.fromJson(_result.data!);
+    return _value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

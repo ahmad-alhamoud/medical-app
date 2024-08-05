@@ -4,18 +4,18 @@ import 'package:flutter_locales/flutter_locales.dart';
 
 import 'package:medical_app/core/config/colors.dart';
 import 'package:medical_app/core/di/injection.dart';
+import 'package:medical_app/features/allargie/logic/allargie_cubit.dart';
+import 'package:medical_app/features/allargie/presentation/screens/allargie_screen.dart';
 import 'package:medical_app/features/blog/logic/blog_cubit.dart';
 import 'package:medical_app/features/blog/presentation/screens/blog_screen.dart';
 import 'package:medical_app/features/disease/logic/diseases_cubit.dart';
 import 'package:medical_app/features/home/presentation/screens/home_screen.dart';
+import 'package:medical_app/features/profile/logic/profile_cubit.dart';
 
 import 'package:medical_app/features/session/logic/session_cubit.dart';
 
 import 'features/disease/presentation/screens/diseases_screen.dart';
 import 'features/session/presentation/screens/sessions_screen.dart';
-
-
-
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -28,8 +28,8 @@ List<Widget> _screens = [
   HomeScreen(),
   SessionsScreen(),
   DiseasesScreen(),
+  AllargieScreen(),
   BlogScreen(),
-
 ];
 
 class _MainScreenState extends State<MainScreen> {
@@ -42,25 +42,32 @@ class _MainScreenState extends State<MainScreen> {
         BlocProvider(create: (context) => getIt<BlogCubit>()),
         BlocProvider(create: (context) => getIt<SessionCubit>()),
         BlocProvider(create: (context) => getIt<DiseasesCubit>()),
+        BlocProvider(create: (context) => getIt<AllargieCubit>()),
       ],
       child: Scaffold(
+
         backgroundColor: AppColors.whiteColor,
         body: _screens[_currentIndex],
-        bottomNavigationBar: ClipRRect(
-          borderRadius: BorderRadius.circular(16 ),
-          child: Container(
-            height: 64,
-            color: AppColors.whiteColor,
-            margin: EdgeInsets.all(24),
+        bottomNavigationBar: Container(
+          padding: EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(30), topLeft: Radius.circular(30)),
+          ),
+          child: Material(
+            elevation: 0,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
             child: BottomNavigationBar(
               selectedItemColor: AppColors.mainBlue,
               currentIndex: _currentIndex,
               unselectedItemColor: AppColors.gray,
               iconSize: 15,
               backgroundColor: AppColors.whiteColor,
-              type: BottomNavigationBarType.fixed ,
+              type: BottomNavigationBarType.fixed,
               showUnselectedLabels: false,
-              onTap: (page){
+              onTap: (page) {
                 setState(() {
                   _currentIndex = page;
                 });
@@ -70,9 +77,18 @@ class _MainScreenState extends State<MainScreen> {
                   icon: Icon(Icons.home),
                   label: context.localeString("home"),
                 ),
-                BottomNavigationBarItem(icon: Icon(Icons.medical_services_rounded), label: context.localeString("sessions")),
-                BottomNavigationBarItem(icon: Icon(Icons.monitor_heart_rounded), label: context.localeString("diseases")),
-                BottomNavigationBarItem(icon: Icon(Icons.post_add), label: "Blog"),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.medical_services_rounded),
+                    label: context.localeString("sessions")),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.monitor_heart_rounded),
+                    label: context.localeString("diseases")),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.monitor_heart_rounded),
+                    label: context.localeString("allargie")),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.post_add),
+                    label: context.localeString("blog")),
               ],
             ),
           ),

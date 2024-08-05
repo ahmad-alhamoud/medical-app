@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:medical_app/core/config/colors.dart';
 import 'package:medical_app/core/config/spacing.dart';
 import 'package:medical_app/core/constant/images/png_images.dart';
+import 'package:medical_app/core/constant/shared_preferance/shared_preferance_keys.dart';
+import 'package:medical_app/core/di/injection.dart';
 import 'package:medical_app/features/profile/presentation/screens/widgets/settings_row.dart';
 import 'package:medical_app/features/profile/presentation/screens/widgets/title_subtitle_cell.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
    ProfileScreen({Key? key}) : super(key: key);
@@ -18,6 +21,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final prefs = serviceLocator<SharedPreferences>();
     return SafeArea(
       child: Scaffold(
 
@@ -47,7 +51,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "احمد الحمود",
+                              prefs.getString(SharedPreferanceKeys.userInfo)!,
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 14,
@@ -55,7 +59,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                             Text(
-                              "ahmad@gmail.com",
+                              prefs.getString(SharedPreferanceKeys.userEmail)!,
                               style: TextStyle(
                                 color: AppColors.gray,
                                 fontSize: 12,
@@ -68,11 +72,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                   verticalSpace(15),
-                  const Row(
+                   Row(
                     children: [
                       Expanded(
                         child: TitleSubtitleCell(
-                          title: "180cm",
+                          title:  prefs.getString(SharedPreferanceKeys.hight)!,
                           subtitle: "الطول",
                         ),
                       ),
@@ -81,7 +85,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       Expanded(
                         child: TitleSubtitleCell(
-                          title: "65kg",
+                          title: prefs.getString(SharedPreferanceKeys.weight)!,
                           subtitle: "الوزن",
                         ),
                       ),
@@ -90,7 +94,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       Expanded(
                         child: TitleSubtitleCell(
-                          title: "25",
+                          title: prefs.getString(SharedPreferanceKeys.age)!,
                           subtitle: "عام",
                         ),
                       ),
@@ -105,7 +109,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       borderRadius: BorderRadius.circular(12),
                       color: AppColors.whiteColor,
                     ),
-
                     height: 40,
                     child: Center(
                       child: SettingRow(
@@ -113,7 +116,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         title: "تواصل معنا",
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

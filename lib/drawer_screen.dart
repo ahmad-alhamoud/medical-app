@@ -1,41 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:medical_app/core/config/colors.dart';
+import 'package:medical_app/core/di/injection.dart';
+import 'package:medical_app/features/profile/logic/profile_cubit.dart';
 
 import 'package:medical_app/main_screen.dart';
 import 'package:medical_app/menu_screen.dart';
 
 class DrawerScreen extends StatefulWidget {
-    const DrawerScreen({Key? key}) : super(key: key);
+  const DrawerScreen({Key? key}) : super(key: key);
 
-    static const routeName = '/drawer_screen';
-    @override
-    State<DrawerScreen> createState() => _DrawerScreenState();
-  }
+  static const routeName = '/drawer_screen';
 
-  class _DrawerScreenState extends State<DrawerScreen> {
+  @override
+  State<DrawerScreen> createState() => _DrawerScreenState();
+}
 
-    final zoomDrawerController = ZoomDrawerController();
+class _DrawerScreenState extends State<DrawerScreen> {
+  final zoomDrawerController = ZoomDrawerController();
 
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        backgroundColor: AppColors.whiteColor,
-        body: ZoomDrawer(
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.whiteColor,
+      body: ZoomDrawer(
           mainScreenOverlayColor: Colors.white,
-            borderRadius:  50,
-            controller: zoomDrawerController,
-            style: DrawerStyle.defaultStyle,
-            showShadow: true,
-            angle: 0.0,
-            menuBackgroundColor: AppColors.mainBlue.withOpacity(0.1),
-            slideWidth: MediaQuery.of(context).size.width * .8,
-            mainScreenScale: 0.2,
-            mainScreenTapClose: true,
-            mainScreenAbsorbPointer: true,
-            menuScreen: MenuScreen(),
-            mainScreen: MainScreen()
-        ),
-      );
-    }
+          borderRadius: 50,
+          controller: zoomDrawerController,
+          style: DrawerStyle.defaultStyle,
+          showShadow: true,
+          angle: 0.0,
+          menuBackgroundColor: AppColors.mainBlue.withOpacity(0.1),
+          slideWidth: MediaQuery.of(context).size.width * .8,
+          mainScreenScale: 0.2,
+          mainScreenTapClose: true,
+          mainScreenAbsorbPointer: true,
+          menuScreen: BlocProvider(
+            create: (context) => ProfileCubit(getIt()),
+            child: MenuScreen(),
+          ),
+          mainScreen: MainScreen()),
+    );
   }
+}

@@ -89,6 +89,7 @@ class BlogDetailScreen extends StatelessWidget {
                     children: [
                       Container(
                         width: size.width / 2,
+
                         child: Text(
                          blogResponseData.attributes!.title.toString(),
                           maxLines: 1,

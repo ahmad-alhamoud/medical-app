@@ -198,6 +198,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/next_go.png
   AssetGenImage get nextGo => const AssetGenImage('assets/images/next_go.png');
 
+  /// File path: assets/images/no_data_found.json
+  String get noDataFound => 'assets/images/no_data_found.json';
+
   /// File path: assets/images/onboarding1.png
   AssetGenImage get onboarding1 =>
       const AssetGenImage('assets/images/onboarding1.png');
@@ -258,6 +261,7 @@ class $AssetsImagesGen {
         logoIcon,
         logoWhite,
         nextGo,
+        noDataFound,
         onboarding1,
         onboarding2,
         onboarding3,

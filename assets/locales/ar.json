@@ -45,5 +45,11 @@
  "patientage" : "السن",
  "sessions" : "جلسات",
  "sessionsdetails" : "الجلسات الطبية",
- "diseases": "الأمراض"
+ "diseases": "الأمراض",
+ "allargie" : "الحساسية",
+ "personaldoc" : "مستندات شخصية",
+ "blog" : "مقالات",
+ "diseasename" : "اسم المرض",
+ "allargiename" : "اسم الحساسية",
+ "yourdiseases" : "Diseases"
 }

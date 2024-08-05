@@ -45,6 +45,12 @@
   "patientage" : "Age",
   "sessions" : "sessions",
   "sessionsdetails" : "Sessions Details",
-  "diseases": "diseases"
+  "diseases": "diseases",
+  "allargie": "allargie",
+  "personaldoc" : "Personal Documents",
+  "blog" : "Blog",
+  "diseasename" : "Disease Name",
+  "allargiename" : "Allargie Name",
+  "yourdiseases" : "الأمراض"
 
 }
