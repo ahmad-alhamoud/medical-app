@@ -91,7 +91,6 @@ class _BlogScreenState extends State<BlogScreen> {
                             verticalSpace(10),
                             Stack(
                               children: [
-
                                 GestureDetector(
                                   onTap: () {
                                     Navigator.of(context)

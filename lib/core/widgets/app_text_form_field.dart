@@ -18,9 +18,6 @@ class AppTextFormField extends StatelessWidget {
   final TextInputAction textInputAction;
   final TextEditingController? controller ;
   final Function(String?)  validator ;
-  final bool? expaned ;
-  final int? minLines;
-  final int? maxLines ;
   const AppTextFormField(
       {Key? key,
       this.contentPadding,
@@ -29,9 +26,7 @@ class AppTextFormField extends StatelessWidget {
       this.inputTextStyle,
       this.hintStyle,
         this.keyboardType,
-        this.expaned,
-        this.minLines,
-        this.maxLines,
+
       required this.hintText,
       this.isObscureText,
       this.suffixIcon,
@@ -46,12 +41,8 @@ class AppTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-
       keyboardType: keyboardType?? TextInputType.text,
       controller: controller,
-      expands: expaned?? false,
-      minLines: minLines,
-      maxLines: maxLines,
       decoration: InputDecoration(
         fillColor: backgroundColor ?? AppColors.moreLightGray,
         filled: true,

@@ -57,10 +57,7 @@ class ContactUsScreen extends StatelessWidget {
                 ),
                 verticalSpace(12),
                 AppTextFormField(
-
-                  minLines: 1,
                     keyboardType: TextInputType.multiline,
-                  maxLines: 5,
                   controller: context.read<ContactUsCubit>().messageController,
                     hintText: context.localeString("message"),
                     validator: (value) {

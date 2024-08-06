@@ -84,7 +84,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
                     isObscureText ? Icons.visibility_off : Icons.visibility),
               ),
               validator: (value) {
-                if (value == null || value.isEmpty) {
+                if (value == null || value.isEmpty ) {
                   return context.localeString("password");
                 }
               },

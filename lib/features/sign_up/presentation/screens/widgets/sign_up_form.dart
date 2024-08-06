@@ -61,7 +61,6 @@ class _SignupFormState extends State<SignupForm> {
       key: context.read<SignUpCubit>().formKey,
       child: Column(
         children: [
-
           AppTextFormField(
             hintText: context.localeString("name"),
             validator: (value) {
@@ -88,6 +87,7 @@ class _SignupFormState extends State<SignupForm> {
           AppTextFormField(
             controller: context.read<SignUpCubit>().passwordController,
             hintText: context.localeString("password"),
+
             isObscureText: isPasswordObscureText,
             suffixIcon: GestureDetector(
               onTap: () {

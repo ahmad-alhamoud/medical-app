@@ -50,7 +50,6 @@ class User {
   bool blocked;
   DateTime createdAt;
   DateTime updatedAt;
-  Role role;
 
   User({
     required this.id,
@@ -61,7 +60,6 @@ class User {
     required this.blocked,
     required this.createdAt,
     required this.updatedAt,
-    required this.role
 }) ;
 
   factory User.fromJson(Map<String , dynamic> json) => _$UserFromJson(json);
