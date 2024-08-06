@@ -12,6 +12,30 @@ import 'package:flutter/widgets.dart';
 class $AssetsFontGen {
   const $AssetsFontGen();
 
+  /// File path: assets/font/Cairo-Black.ttf
+  String get cairoBlack => 'assets/font/Cairo-Black.ttf';
+
+  /// File path: assets/font/Cairo-Bold.ttf
+  String get cairoBold => 'assets/font/Cairo-Bold.ttf';
+
+  /// File path: assets/font/Cairo-ExtraBold.ttf
+  String get cairoExtraBold => 'assets/font/Cairo-ExtraBold.ttf';
+
+  /// File path: assets/font/Cairo-ExtraLight.ttf
+  String get cairoExtraLight => 'assets/font/Cairo-ExtraLight.ttf';
+
+  /// File path: assets/font/Cairo-Light.ttf
+  String get cairoLight => 'assets/font/Cairo-Light.ttf';
+
+  /// File path: assets/font/Cairo-Medium.ttf
+  String get cairoMedium => 'assets/font/Cairo-Medium.ttf';
+
+  /// File path: assets/font/Cairo-Regular.ttf
+  String get cairoRegular => 'assets/font/Cairo-Regular.ttf';
+
+  /// File path: assets/font/Cairo-SemiBold.ttf
+  String get cairoSemiBold => 'assets/font/Cairo-SemiBold.ttf';
+
   /// File path: assets/font/Poppins-Bold.ttf
   String get poppinsBold => 'assets/font/Poppins-Bold.ttf';
 
@@ -96,6 +120,14 @@ class $AssetsFontGen {
 
   /// List of all assets
   List<String> get values => [
+        cairoBlack,
+        cairoBold,
+        cairoExtraBold,
+        cairoExtraLight,
+        cairoLight,
+        cairoMedium,
+        cairoRegular,
+        cairoSemiBold,
         poppinsBold,
         poppinsExtraBold,
         poppinsLight,
@@ -148,6 +180,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/arrow_back.svg
   String get arrowBack => 'assets/images/arrow_back.svg';
 
+  /// File path: assets/images/blood.png
+  AssetGenImage get blood => const AssetGenImage('assets/images/blood.png');
+
   /// File path: assets/images/bookmark.svg
   String get bookmark => 'assets/images/bookmark.svg';
 
@@ -161,9 +196,16 @@ class $AssetsImagesGen {
   /// File path: assets/images/details.jpg
   AssetGenImage get details => const AssetGenImage('assets/images/details.jpg');
 
+  /// File path: assets/images/diseases_img.jpg
+  AssetGenImage get diseasesImg =>
+      const AssetGenImage('assets/images/diseases_img.jpg');
+
   /// File path: assets/images/doctor_image.png
   AssetGenImage get doctorImage =>
       const AssetGenImage('assets/images/doctor_image.png');
+
+  /// File path: assets/images/drug.png
+  AssetGenImage get drug => const AssetGenImage('assets/images/drug.png');
 
   /// File path: assets/images/english.png
   AssetGenImage get english => const AssetGenImage('assets/images/english.png');
@@ -245,11 +287,14 @@ class $AssetsImagesGen {
         ar,
         arabic,
         arrowBack,
+        blood,
         bookmark,
         completeProfileImg,
         date,
         details,
+        diseasesImg,
         doctorImage,
+        drug,
         english,
         hight,
         home,

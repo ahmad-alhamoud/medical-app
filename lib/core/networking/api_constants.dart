@@ -1,11 +1,11 @@
 
 class ApiConstants {
-      static const String apiBaseUrl = "http://192.168.1.106:1337/api/" ;
+      static const String apiBaseUrl = "http://192.168.100.159:1337/api/" ;
   static const String login = "auth/local" ;
   static const String signup = "auth/local/register";
   static const String contactUs = "contact-forms" ;
 
-  static const String imageBase = "http://192.168.1.106:1337";
+  static const String imageBase = "http://192.168.100.159:1337";
   static const allBlogs = 'blogs?&fields[0]=title&populate[mainImage][fields][0]=name&populate[mainImage][fields][1]=url&populate[paragraph][fields][0]=title&populate[paragraph][fields][1]=content' ;
 
   static const String sessions = 'patient-profiles/1?fields[0]=id&populate[sessions][fields][1]=*';

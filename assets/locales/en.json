@@ -51,6 +51,9 @@
   "blog" : "Blog",
   "diseasename" : "Disease Name",
   "allargiename" : "Allargie Name",
-  "yourdiseases" : "الأمراض"
+  "yourdiseases" : "الأمراض",
+  "familystatus" : "family\nStatus",
+  "smoker" : "Smoker",
+  "medicines" : " Last Medicines"
 
 }

@@ -37,114 +37,142 @@ class _BlogScreenState extends State<BlogScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.whiteColor,
-          title: ShowSvg(
-            path: SvgImages.logoPrimeryColor,
-            color: AppColors.mainBlue,
-            height: 20,
-          ),
-          centerTitle: true,
-        ),
-        backgroundColor: AppColors.whiteColor,
-        body: BlocBuilder<BlogCubit, BlogState>(
-          buildWhen: (previous, current) =>
-              current is Loading || current is Success || current is Error,
-          builder: (context, state) {
-            return state.maybeWhen(success: (BlogResponseBody) {
-              List<BlogResponseData> data = BlogResponseBody.data;
-
-              return ListView.builder(
-                itemCount: data.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15.w),
-                    child: Column(
-                      children: [
-                        verticalSpace(10),
-                        Stack(
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.of(context)
-                                    .push(MaterialPageRoute(builder: (context) {
-                                  return BlogDetailScreen(
-                                      blogResponseData: data[index]);
-                                }));
-                              },
-                              child: Hero(
-                                tag: data[index].id.toString(),
-                                child: Container(
-                                  height: 200.h,
-                                  width: size.width,
-                                  decoration: BoxDecoration(
-                                    color: AppColors.lighterGray,
-                                    borderRadius: BorderRadius.circular(24),
-                                    image: DecorationImage(
-                                        image: NetworkImage(
-                                          ApiConstants.imageBase +
-                                              data[index]
-                                                  .attributes!
-                                                  .mainImage!
-                                                  .data![0]
-                                                  .attributes!
-                                                  .url
-                                                  .toString(),
-                                        ),
-                                        fit: BoxFit.cover),
-                                  ),
-                                ),
+    return Scaffold(
+      backgroundColor: AppColors.whiteColor,
+      body: BlocBuilder<BlogCubit, BlogState>(
+        buildWhen: (previous, current) =>
+            current is Loading || current is Success || current is Error,
+        builder: (context, state) {
+          return state.maybeWhen(success: (BlogResponseBody) {
+            List<BlogResponseData> data = BlogResponseBody.data;
+            return Column(
+              children: [
+                Container(
+                  height: 160.h,
+                  decoration: BoxDecoration(
+                      color: Color(0xFF363f93),
+                      borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(50))),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                          top: 80.h,
+                          left: 0,
+                          child: Container(
+                            height: 60.h,
+                            width: 300.w,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(50),
+                                  bottomRight: Radius.circular(50),
+                                )),
+                            child: Center(
+                              child: Text(
+                                context.localeString("blog"),
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Positioned(
-                              bottom: 0,
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 16.h, horizontal: 24.w),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    verticalSpace(10),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
+                          ))
+                    ],
+                  ),
+                ),
+                Flexible(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: data.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 15.w),
+                        child: Column(
+                          children: [
+                            verticalSpace(10),
+                            Stack(
+                              children: [
+
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(builder: (context) {
+                                      return BlogDetailScreen(
+                                          blogResponseData: data[index]);
+                                    }));
+                                  },
+                                  child: Hero(
+                                    tag: data[index].id.toString(),
+                                    child: Container(
+                                      height: 200.h,
+                                      width: size.width,
+                                      decoration: BoxDecoration(
+                                        color: AppColors.lighterGray,
+                                        borderRadius: BorderRadius.circular(24),
+                                        image: DecorationImage(
+                                            image: NetworkImage(
+                                              ApiConstants.imageBase +
+                                                  data[index]
+                                                      .attributes!
+                                                      .mainImage!
+                                                      .data![0]
+                                                      .attributes!
+                                                      .url
+                                                      .toString(),
+                                            ),
+                                            fit: BoxFit.cover),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  bottom: 0,
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: 16.h, horizontal: 24.w),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        CircleAvatar(
-                                          backgroundColor: AppColors.whiteColor,
-                                          child: Image.asset(
-                                            PngImages.doctorImage,
-                                            height: 30.h,
-                                            width: 40.w,
-                                          ),
-                                        ),
-                                        horizontalSpace(10),
-                                        Text(
-                                          context
-                                              .localeString("ministryofhealth"),
-                                          style: FontTextStyle.medium(
-                                              fontSize: 17,
-                                              color: AppColors.whiteColor),
+                                        verticalSpace(10),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            CircleAvatar(
+                                              backgroundColor: AppColors.whiteColor,
+                                              child: Image.asset(
+                                                PngImages.doctorImage,
+                                                height: 30.h,
+                                                width: 40.w,
+                                              ),
+                                            ),
+                                            horizontalSpace(10),
+                                            Text(
+                                              context
+                                                  .localeString("ministryofhealth"),
+                                              style: FontTextStyle.medium(
+                                                  fontSize: 17,
+                                                  color: AppColors.whiteColor),
+                                            )
+                                          ],
                                         )
                                       ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            )
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
                           ],
                         ),
-                      ],
-                    ),
-                  );
-                },
-              );
-            }, orElse: () {
-              return Center(child: NoDataFoundWidget());
-            });
-          },
-        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            );
+          }, orElse: () {
+            return Center(child: NoDataFoundWidget());
+          });
+        },
       ),
     );
   }

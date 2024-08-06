@@ -51,5 +51,8 @@
  "blog" : "مقالات",
  "diseasename" : "اسم المرض",
  "allargiename" : "اسم الحساسية",
- "yourdiseases" : "Diseases"
-}
+ "yourdiseases" : "Diseases",
+ "familystatus" : "الحالة الاجتماعية",
+ "smoker" : "مدخن",
+ "medicines" : "الأدوية السابقة"
+ }

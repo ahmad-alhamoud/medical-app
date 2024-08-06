@@ -5,7 +5,7 @@ class FontTextStyle {
     return TextStyle(
       fontSize: fontSize,
       color: color,
-      fontFamily: "montserrat_black",
+      fontFamily: "Cairo-Medium",
       height: 1.2,
     );
   }
@@ -14,7 +14,7 @@ class FontTextStyle {
     return TextStyle(
       fontSize: fontSize,
       color: color,
-      fontFamily: "montserrat_blackItalic",
+      fontFamily: "Cairo-Medium",
       height: 1.2,
     );
   }
@@ -23,7 +23,7 @@ class FontTextStyle {
     return TextStyle(
       fontSize: fontSize,
       color: color,
-      fontFamily: "Poppins-Bold",
+      fontFamily: "Cairo-Medium",
       height: 1.2,
     );
   }
@@ -32,7 +32,7 @@ class FontTextStyle {
     return TextStyle(
       fontSize: fontSize,
       color: color,
-      fontFamily: "montserrat_boldItalic",
+      fontFamily: "Cairo-Medium",
       height: 1.2,
     );
   }
@@ -41,7 +41,7 @@ class FontTextStyle {
     return TextStyle(
       fontSize: fontSize,
       color: color,
-      fontFamily: "montserrat_extrabold",
+      fontFamily: "Cairo-Medium",
       height: 1.2,
     );
   }
@@ -50,7 +50,7 @@ class FontTextStyle {
     return TextStyle(
       fontSize: fontSize,
       color: color,
-      fontFamily: "montserrat_extraboldItalic",
+      fontFamily: "Cairo-Medium",
       height: 1.2,
     );
   }
@@ -59,7 +59,7 @@ class FontTextStyle {
     return TextStyle(
       fontSize: fontSize,
       color: color,
-      fontFamily: "montserrat_light",
+      fontFamily: "Cairo-Medium",
       height: 1.2,
     );
   }
@@ -68,7 +68,7 @@ class FontTextStyle {
     return TextStyle(
       fontSize: fontSize,
       color: color,
-      fontFamily: "montserrat_extralightItalic",
+      fontFamily: "Cairo-Medium",
       height: 1.2,
     );
   }
@@ -77,7 +77,7 @@ class FontTextStyle {
     return TextStyle(
       fontSize: fontSize,
       color: color,
-      fontFamily: "montserrat_black",
+      fontFamily: "Cairo-Medium",
       height: 1.2,
     );
   }
@@ -86,7 +86,7 @@ class FontTextStyle {
     return TextStyle(
       fontSize: fontSize,
       color: color,
-      fontFamily: "montserrat_italic",
+      fontFamily: "Cairo-Medium",
       height: 1.2,
     );
   }
@@ -95,7 +95,7 @@ class FontTextStyle {
     return TextStyle(
       fontSize: fontSize,
       color: color,
-      fontFamily: "montserrat_lightItalic",
+      fontFamily: "Cairo-Medium",
       height: 1.2,
     );
   }
@@ -104,7 +104,7 @@ class FontTextStyle {
     return TextStyle(
       fontSize: fontSize,
       color: color,
-      fontFamily: "montserrat_medium",
+      fontFamily: "Cairo-Medium",
       height: 1.2,
     );
   }
@@ -113,7 +113,7 @@ class FontTextStyle {
     return TextStyle(
       fontSize: fontSize,
       color: color,
-      fontFamily: "montserrat_mediumItalic",
+      fontFamily: "Cairo-Medium",
       height: 1.2,
     );
   }
@@ -122,7 +122,7 @@ class FontTextStyle {
     return TextStyle(
       fontSize: fontSize,
       color: color,
-      fontFamily: "Poppins-Regular",
+      fontFamily: "Cairo-Medium",
       height: 1.2,
     );
   }
@@ -131,7 +131,7 @@ class FontTextStyle {
     return TextStyle(
       fontSize: fontSize,
       color: color,
-      fontFamily: "montserrat_semibold",
+      fontFamily: "Cairo-Medium",
       height: 1.2,
     );
   }
@@ -140,7 +140,7 @@ class FontTextStyle {
     return TextStyle(
       fontSize: fontSize,
       color: color,
-      fontFamily: "montserrat_semibolditalic",
+      fontFamily: "Cairo-Medium",
       height: 1.2,
     );
   }
@@ -149,7 +149,7 @@ class FontTextStyle {
     return TextStyle(
       fontSize: fontSize,
       color: color,
-      fontFamily: "montserrat_thin",
+      fontFamily: "Cairo-Medium",
       height: 1.2,
     );
   }
@@ -158,7 +158,7 @@ class FontTextStyle {
     return TextStyle(
       fontSize: fontSize,
       color: color,
-      fontFamily: "montserrat_thinItalic",
+      fontFamily: "Cairo-Medium",
       height: 1.2,
     );
   }

@@ -13,7 +13,7 @@ class _ApiService implements ApiService {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://192.168.1.106:1337/api/';
+    baseUrl ??= 'http://192.168.100.159:1337/api/';
   }
 
   final Dio _dio;

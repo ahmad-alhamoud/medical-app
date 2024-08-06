@@ -49,6 +49,9 @@ class _MyAppState extends State<MyApp> {
                       localizationsDelegates: Locales.delegates,
                       supportedLocales: Locales.supportedLocales,
                       locale: locale,
+                      theme: ThemeData(
+                        fontFamily: "Cairo-Medium"
+                      ),
                       onGenerateRoute: AppRouter.onGenerateRoute,
                       home: Builder(
                         builder: (context) {

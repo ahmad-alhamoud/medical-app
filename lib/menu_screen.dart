@@ -75,6 +75,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 14,
+
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
