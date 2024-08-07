@@ -14,6 +14,8 @@ import 'package:medical_app/features/disease/data/repos/diseases_repo.dart';
 import 'package:medical_app/features/disease/logic/diseases_cubit.dart';
 import 'package:medical_app/features/login/data/repos/login_repo.dart';
 import 'package:medical_app/features/login/logic/login_cubit.dart';
+import 'package:medical_app/features/presecrption/data/repos/presecrption_repo.dart';
+import 'package:medical_app/features/presecrption/logic/presecrption_cubit.dart';
 import 'package:medical_app/features/profile/data/repos/profile_repo.dart';
 import 'package:medical_app/features/profile/logic/profile_cubit.dart';
 import 'package:medical_app/features/session/data/repos/session_repo.dart';
@@ -60,5 +62,8 @@ Future<void> appDependencies() async {
 
   getIt.registerLazySingleton<ProfileRepo>(()=>ProfileRepo(getIt()));
   getIt.registerFactory<ProfileCubit>(()=> ProfileCubit(getIt()));
+
+  getIt.registerLazySingleton<PresecrptionRepo>(()=>PresecrptionRepo(getIt()));
+  getIt.registerFactory<PresecrptionCubit>(()=> PresecrptionCubit(getIt()));
 
 }

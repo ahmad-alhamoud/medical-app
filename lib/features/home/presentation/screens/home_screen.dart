@@ -14,6 +14,8 @@ import 'package:medical_app/core/networking/api_constants.dart';
 import 'package:medical_app/core/widgets/home_box.dart';
 import 'package:medical_app/core/widgets/no_data_found_screen.dart';
 import 'package:medical_app/features/allargie/presentation/screens/allargie_screen.dart';
+import 'package:medical_app/features/presecrption/logic/presecrption_cubit.dart';
+import 'package:medical_app/features/presecrption/logic/presecrption_state.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/constant/images/svg_images.dart';
@@ -30,16 +32,16 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final prefs = serviceLocator<SharedPreferences>();
+
   @override
   void initState() {
     context.read<ProfileCubit>().emitProfileStates();
+    context.read<PresecrptionCubit>().emitPresecrptionState();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-
-
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -50,10 +52,11 @@ class _HomeScreenState extends State<HomeScreen> {
             current is Loading || current is Success || current is Error,
         builder: (context, state) {
           return state.maybeWhen(success: (ProfileResponseBody) {
-            DateTime? dataTime = DateTime.tryParse(ProfileResponseBody.data.attributes.birthDate.toString());
+            DateTime? dataTime = DateTime.tryParse(
+                ProfileResponseBody.data.attributes.birthDate.toString());
 
             String formatedDateStart =
-            DateFormat('dd/MM/yyyy').format(dataTime!);
+                DateFormat('dd/MM/yyyy').format(dataTime!);
 
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,9 +97,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               CircleAvatar(
                                 backgroundColor: Colors.transparent,
                                 radius: 35,
-                                backgroundImage: NetworkImage(
-                                 ApiConstants.imageBase+ProfileResponseBody.data.attributes.profilePic.data.attributes.url
-                                ),
+                                backgroundImage:  NetworkImage(
+                                    ApiConstants.imageBase +
+                                        ProfileResponseBody.data.attributes
+                                            .profilePic.data.attributes.url ) ,
                               ),
                               horizontalSpace(100),
                               Column(
@@ -130,20 +134,30 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    buildBox(context, Icons.smoking_rooms_outlined,
-                        Colors.redAccent , ProfileResponseBody.data.attributes.smoker.toString()),
-                    buildBox(context, Icons.family_restroom_rounded,
-                        AppColors.mainBlue,ProfileResponseBody.data.attributes.familyStatus),
-                    buildBox(context, Icons.bloodtype, Colors.redAccent,ProfileResponseBody.data.attributes.blodType),
+                    buildBox(
+                        context,
+                        Icons.smoking_rooms_outlined,
+                        Colors.redAccent,
+                        ProfileResponseBody.data.attributes.smoker.toString()),
+                    buildBox(
+                        context,
+                        Icons.family_restroom_rounded,
+                        AppColors.mainBlue,
+                        ProfileResponseBody.data.attributes.familyStatus),
+                    buildBox(context, Icons.bloodtype, Colors.redAccent,
+                        ProfileResponseBody.data.attributes.blodType),
                   ],
                 ),
                 verticalSpace(20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    buildBox(context, Icons.date_range, Colors.green,formatedDateStart),
-                    buildBox(context, Icons.work, Colors.deepPurpleAccent,ProfileResponseBody.data.attributes.job),
-                    buildBox(context, Icons.home, Colors.black,ProfileResponseBody.data.attributes.nationality),
+                    buildBox(context, Icons.date_range, Colors.green,
+                        formatedDateStart),
+                    buildBox(context, Icons.work, Colors.deepPurpleAccent,
+                        ProfileResponseBody.data.attributes.job),
+                    buildBox(context, Icons.home, Colors.black,
+                        ProfileResponseBody.data.attributes.nationality),
                   ],
                 ),
                 // prescription
@@ -158,10 +172,87 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: AppColors.gray),
                   ),
                 ),
-                // ListView.builder(
-                //     itemBuilder: (context , index) {
-                //       return
-                //     })
+                BlocBuilder<PresecrptionCubit, PresecrptionState>(
+                    buildWhen: (previous, current) =>
+                        current is Wrong ||
+                        current is DataLoading ||
+                        current is DataLoaded,
+                    builder: (context, state) {
+                      return state.maybeWhen(
+                          dataLoaded: (PrescriptionResponseBody) {
+
+                        return  PrescriptionResponseBody.data.attributes.prescription.length == 0 ? Padding(
+                          padding:  EdgeInsets.all(40.h),
+                          child: Center(
+                            child: Text(
+                                context.localeString("nomediciensfound"),
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold
+                              ),
+                            ),
+                          ),
+                        ) :Flexible(
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                              itemCount: PrescriptionResponseBody
+                                  .data.attributes.prescription.length,
+                              itemBuilder: (context, i) {
+                                DateTime? dataTime = DateTime.tryParse(
+                                    PrescriptionResponseBody.data.attributes.prescription[i].medicines.data[0].attributes.createdAt.toString());
+
+                                String formatedDateStart =
+                                DateFormat('dd/MM/yyyy').format(dataTime!);
+                                return Container(
+                                  padding: EdgeInsets.all(20),
+                                  height: 70.h,
+                                  margin: EdgeInsets.symmetric(vertical: 10 , horizontal: 10),
+                                  width: double.maxFinite,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.grey.withOpacity(0.3),
+                                        offset: Offset(4, 5)
+                                      ),
+                                    ] ,
+                                    borderRadius: BorderRadius.circular(20)
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        children: [
+                                          Text(
+                                          "${PrescriptionResponseBody
+                                              .data.attributes.prescription[i].medicines.data[0].attributes.name}" ?? ""
+                                          ),
+                                          verticalSpace(5),
+                                          Text(
+                                              "${PrescriptionResponseBody
+                                                  .data.attributes.prescription[i].medicines.data[0].attributes.description}"??"",
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
+                                          ),
+                                        ],
+                                      ),
+                                      Text(
+                                        "${formatedDateStart}" ??""
+                                      )
+                                    ],
+                                  ),
+                                );
+                              }),
+                        );
+                      }, orElse: () {
+                        return  Center(
+                          child: Text(
+                            context.localeString("nomediciensfound")
+                              ),
+                        );
+                      });
+                    }
+                    )
               ],
             );
           }, orElse: () {
@@ -172,7 +263,8 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget buildBox(BuildContext context, IconData icon, Color color , String text) {
+  Widget buildBox(
+      BuildContext context, IconData icon, Color color, String text) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       height: 90.h,

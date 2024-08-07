@@ -75,7 +75,7 @@ class GlobalPruposeFunctions {
   }
   static String? getUserName() {
     final prefs = serviceLocator<SharedPreferences>();
-    return prefs.getString(SharedPreferanceKeys.userEmail);
+    return prefs.getString(SharedPreferanceKeys.userInfo);
   }
 
   //

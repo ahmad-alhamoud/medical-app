@@ -54,6 +54,8 @@
   "yourdiseases" : "الأمراض",
   "familystatus" : "family\nStatus",
   "smoker" : "Smoker",
-  "medicines" : " Last Medicines"
+  "medicines" : " Last Medicines",
+  "nomediciensfound"  : "No Medicines Found",
+  "logout" : "Logout"
 
 }

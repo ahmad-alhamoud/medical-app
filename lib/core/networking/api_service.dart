@@ -4,6 +4,7 @@ import 'package:medical_app/features/blog/data/models/blog_response_body.dart';
 import 'package:medical_app/features/contact_us/data/models/contact_us_reponse.dart';
 import 'package:medical_app/features/disease/data/models/diseases_response_body.dart';
 import 'package:medical_app/features/login/data/models/login_response.dart';
+import 'package:medical_app/features/presecrption/data/models/presecrption_response_body.dart';
 import 'package:medical_app/features/session/data/models/session_response_body.dart';
 import 'package:medical_app/features/sign_up/data/models/sign_up_response.dart';
 
@@ -52,6 +53,9 @@ abstract class ApiService {
 
   @GET(ApiConstants.profile)
   Future<ProfileResponseBody> getPatientProfile();
+
+  @GET(ApiConstants.presecrption)
+  Future<PrescriptionResponseBody> getAllPresecrption();
 
   // @POST(ApiConstants.login)
   // Future<LoginResponse> login(

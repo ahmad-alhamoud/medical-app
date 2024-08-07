@@ -10,6 +10,7 @@ import 'package:medical_app/features/blog/logic/blog_cubit.dart';
 import 'package:medical_app/features/blog/presentation/screens/blog_screen.dart';
 import 'package:medical_app/features/disease/logic/diseases_cubit.dart';
 import 'package:medical_app/features/home/presentation/screens/home_screen.dart';
+import 'package:medical_app/features/presecrption/logic/presecrption_cubit.dart';
 import 'package:medical_app/features/profile/logic/profile_cubit.dart';
 
 import 'package:medical_app/features/session/logic/session_cubit.dart';
@@ -43,6 +44,7 @@ class _MainScreenState extends State<MainScreen> {
         BlocProvider(create: (context) => getIt<SessionCubit>()),
         BlocProvider(create: (context) => getIt<DiseasesCubit>()),
         BlocProvider(create: (context) => getIt<AllargieCubit>()),
+        BlocProvider(create: (context) => getIt<PresecrptionCubit>()),
       ],
       child: Scaffold(
 

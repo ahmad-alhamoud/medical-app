@@ -54,5 +54,7 @@
  "yourdiseases" : "Diseases",
  "familystatus" : "الحالة الاجتماعية",
  "smoker" : "مدخن",
- "medicines" : "الأدوية السابقة"
+ "medicines" : "الأدوية السابقة",
+ "nomediciensfound" : "لا يوجد أدوية",
+ "logout" : "تسجيل خروج"
  }

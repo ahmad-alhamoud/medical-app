@@ -33,7 +33,7 @@ class SignUpCubit extends Cubit<SignupState> {
           final prefs = serviceLocator<SharedPreferences>();
           await saveUserToken(signupResponse.jwt);
           await prefs.setString(SharedPreferanceKeys.userEmail  ,signupResponse.user.email);
-          await prefs.setString(SharedPreferanceKeys.userInfo  ,signupResponse.user.username);
+          await prefs.setString(SharedPreferanceKeys.userInfo,signupResponse.user.username);
           emit(SignupState.signupSuccess(signupResponse));
         },
         failure: (error) {

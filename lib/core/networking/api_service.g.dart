@@ -13,7 +13,7 @@ class _ApiService implements ApiService {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://192.168.43.194:1337/api/';
+    baseUrl ??= 'http://192.168.1.106:1337/api/';
   }
 
   final Dio _dio;
@@ -146,7 +146,7 @@ class _ApiService implements ApiService {
     )
             .compose(
               _dio.options,
-              'patient-profiles/2?fields[0]=id&populate[sessions][fields][1]=*',
+              'patient-profiles/1?fields[0]=id&populate[sessions][fields][1]=*',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -173,7 +173,7 @@ class _ApiService implements ApiService {
     )
             .compose(
               _dio.options,
-              'patient-profiles/2?fields[0]=id&populate=diseases',
+              'patient-profiles/1?fields[0]=id&populate=diseases',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -200,7 +200,7 @@ class _ApiService implements ApiService {
     )
             .compose(
               _dio.options,
-              'patient-profiles/2?fields[0]=id&populate=allargies',
+              'patient-profiles/1?fields[0]=id&populate=allargies',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -227,7 +227,7 @@ class _ApiService implements ApiService {
     )
             .compose(
               _dio.options,
-              'patient-profiles/2?fields[0]=id&fields[1]=blodType&fields[2]=Smoker&fields[3]=familyStatus&fields[4]=birthDate&fields[5]=phoneNumber&fields[6]=job&fields[7]=nationality&populate[IDFile][fields][1]=url&populate[ProfilePic][fields][1]=url',
+              'patient-profiles/1?fields[0]=id&fields[1]=blodType&fields[2]=Smoker&fields[3]=familyStatus&fields[4]=birthDate&fields[5]=phoneNumber&fields[6]=job&fields[7]=nationality&populate[IDFile][fields][1]=url&populate[ProfilePic][fields][1]=url',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -237,6 +237,33 @@ class _ApiService implements ApiService {
               baseUrl,
             ))));
     final _value = ProfileResponseBody.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
+  Future<PrescriptionResponseBody> getAllPresecrption() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<PrescriptionResponseBody>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'patient-profiles/1?fields[0]=id&populate[prescription][populate]=*',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = PrescriptionResponseBody.fromJson(_result.data!);
     return _value;
   }
 

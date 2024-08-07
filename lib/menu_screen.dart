@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:medical_app/core/config/colors.dart';
+import 'package:medical_app/core/constant/shared_preferance/shared_preferance_keys.dart';
 import 'package:medical_app/core/di/injection.dart';
 import 'package:medical_app/features/blog/presentation/screens/blog_detail_screen.dart';
 import 'package:medical_app/features/contact_us/presentation/screens/contact_us_screen.dart';
+import 'package:medical_app/features/login/presentation/screens/login_screen.dart';
 import 'package:medical_app/features/profile/data/models/profile_response_body.dart';
 import 'package:medical_app/features/profile/logic/profile_cubit.dart';
 import 'package:medical_app/features/profile/logic/profile_state.dart';
 import 'package:medical_app/features/profile/presentation/screens/widgets/personal_doc_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/config/spacing.dart';
 import 'core/constant/images/png_images.dart';
@@ -33,6 +36,7 @@ class _MenuScreenState extends State<MenuScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final Prefs = serviceLocator<SharedPreferences>();
     return SafeArea(
       child: BlocBuilder<ProfileCubit, ProfileState>(
         buildWhen: (previous, current) =>
@@ -179,21 +183,35 @@ class _MenuScreenState extends State<MenuScreen> {
                           ),
                         ),
                         verticalSpace(40),
-                        // Container(
-                        //   padding: EdgeInsets.all(10),
-                        //   decoration: BoxDecoration(
-                        //     borderRadius: BorderRadius.circular(12),
-                        //     color: Colors.red.withOpacity(0.5),
-                        //   ),
-                        //
-                        //   child: Text(
-                        //       "جميع البيانات محفوظة بأمان لدى وزراة الصحة شكرا لثقتك...",
-                        //   style: TextStyle(
-                        //     fontSize: 16,
-                        //     color: Colors.black
-                        //   ),
-                        //   ),
-                        // )
+                        GestureDetector(
+                          onTap: (){
+                              Prefs.remove(SharedPreferanceKeys.userToken);
+                              Navigator.of(context).pushNamedAndRemoveUntil(LoginScreen.routeName, (Route<dynamic> route) => false);
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: Colors.red.withOpacity(0.5),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                    context.localeString("logout"),
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: AppColors.whiteColor
+                                ),
+                                ),
+                                Icon(
+                                    Icons.logout,
+                                color: AppColors.whiteColor,
+                                )
+                              ],
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),
